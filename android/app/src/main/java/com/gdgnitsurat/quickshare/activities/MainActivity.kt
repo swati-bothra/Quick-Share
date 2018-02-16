@@ -55,6 +55,9 @@ class MainActivity : AppCompatActivity() {
         instantiateMenuItems()
         setupProfileDrawer()
         setupNavigationDrawerWithHeader()
+        getAndroidId()
+    }
+    private fun getAndroidId(){
         androidID = Settings.Secure.getString(contentResolver,Settings.Secure.ANDROID_ID)
     }
 
@@ -180,8 +183,8 @@ class MainActivity : AppCompatActivity() {
                 //Successfully signed in
                 Toast.makeText(this, R.string.sign_in_success, Toast.LENGTH_LONG).show()
                 updateUIAfterSignIn()
-                FirebaseUtil.addCurrentUserToFirebaseDatabase(androidID)
-                FirebaseUtil.addDevicesToFirebaseDatabase(androidID)
+                FirebaseUtil.addCurrentUserToFirebaseDatabase()
+                FirebaseUtil.addDeviceToFirebaseDatabase(androidID)
                 return
             } else {
                 //User pressed back button
@@ -203,6 +206,7 @@ class MainActivity : AppCompatActivity() {
                     return
                 }
             }
+
         }
     }
 

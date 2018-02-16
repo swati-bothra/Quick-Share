@@ -28,7 +28,7 @@ class ClipChangeListener(ClipboardService: ClipboardService) : ClipboardManager.
             clip = mLocalClipData.getItemAt(0).coerceToText(this.clipboardService.applicationContext).toString()
             var currentTime :Date = Calendar.getInstance().time
             Log.e("ClipChangeListener", "Clip: " + clip)
-            FirebaseUtil.addClipsToFirebaseDatabase(clip,currentTime.toString())
+            FirebaseUtil.addClipToFirebaseDatabase(clip,currentTime.toString())
         } while (!this.clipboardService.clipDescription(clip))
         showPopupView()
     }
