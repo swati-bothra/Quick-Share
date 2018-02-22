@@ -44,8 +44,7 @@ class MainActivity : AppCompatActivity() {
     private var itemDevices: PrimaryDrawerItem? = null
     private var itemSettings: PrimaryDrawerItem? = null
     private var currentProfile: PrimaryDrawerItem? = null
-    var androidID = ""
-    var sp: SharedPreferences? = null
+    private var androidID = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,10 +55,10 @@ class MainActivity : AppCompatActivity() {
         instantiateMenuItems()
         setupProfileDrawer()
         setupNavigationDrawerWithHeader()
-        getAndroidId()
+        saveDeviceID()
     }
 
-    fun getAndroidId() {
+    fun saveDeviceID() {
         androidID = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
         val sharedPreference: SharedPreferences = getSharedPreferences(Constants.PREF_NAME, Context.MODE_PRIVATE)
         val editor = sharedPreference.edit()
