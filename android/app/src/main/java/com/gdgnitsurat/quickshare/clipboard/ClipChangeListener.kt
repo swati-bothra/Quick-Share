@@ -8,13 +8,11 @@ import android.support.annotation.RequiresApi
 import android.util.Log
 import android.view.Gravity
 import android.view.WindowManager
-import com.gdgnitsurat.quickshare.activities.MainActivity
 import com.gdgnitsurat.quickshare.utils.FirebaseUtil
 import com.gdgnitsurat.quickshare.views.PopUpViewUtil
 import java.util.*
-import kotlin.concurrent.timer
 
-class ClipChangeListener(ClipboardService: ClipboardService) : ClipboardManager.OnPrimaryClipChangedListener {
+class ClipChangeListener(ClipboardService: ClipboardService) : ClipboardManager.OnPrimaryClipChangedListener{
 
     private var clipboardService: ClipboardService = ClipboardService
     private var popUpViewUtil: PopUpViewUtil
@@ -26,7 +24,7 @@ class ClipChangeListener(ClipboardService: ClipboardService) : ClipboardManager.
         do {
             val mLocalClipData: ClipData = this.clipboardService.clipboardManager.primaryClip
             clip = mLocalClipData.getItemAt(0).coerceToText(this.clipboardService.applicationContext).toString()
-            var currentTime :Date = Calendar.getInstance().time
+            val currentTime :Date = Calendar.getInstance().time
             Log.e("ClipChangeListener", "Clip: " + clip)
             FirebaseUtil.addClipToFirebaseDatabase(clip,currentTime.toString())
         } while (!this.clipboardService.clipDescription(clip))
