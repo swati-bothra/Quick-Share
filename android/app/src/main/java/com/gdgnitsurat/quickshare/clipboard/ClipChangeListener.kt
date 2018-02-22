@@ -12,7 +12,7 @@ import com.gdgnitsurat.quickshare.utils.FirebaseUtil
 import com.gdgnitsurat.quickshare.views.PopUpViewUtil
 import java.util.*
 
-class ClipChangeListener(ClipboardService: ClipboardService) : ClipboardManager.OnPrimaryClipChangedListener{
+class ClipChangeListener(ClipboardService: ClipboardService) : ClipboardManager.OnPrimaryClipChangedListener {
 
     private var clipboardService: ClipboardService = ClipboardService
     private var popUpViewUtil: PopUpViewUtil
@@ -24,9 +24,9 @@ class ClipChangeListener(ClipboardService: ClipboardService) : ClipboardManager.
         do {
             val mLocalClipData: ClipData = this.clipboardService.clipboardManager.primaryClip
             clip = mLocalClipData.getItemAt(0).coerceToText(this.clipboardService.applicationContext).toString()
-            val currentTime :Date = Calendar.getInstance().time
+            val currentTime: Date = Calendar.getInstance().time
             Log.e("ClipChangeListener", "Clip: " + clip)
-            FirebaseUtil.addClipToFirebaseDatabase(clip,currentTime.toString())
+            FirebaseUtil.addClipToFirebaseDatabase(clip, currentTime.toString())
         } while (!this.clipboardService.clipDescription(clip))
         showPopupView()
     }

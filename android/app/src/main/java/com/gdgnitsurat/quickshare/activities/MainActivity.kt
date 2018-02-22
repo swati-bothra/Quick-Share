@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         val sharedPreference: SharedPreferences = getSharedPreferences(Constants.PREF_NAME, Context.MODE_PRIVATE)
         val editor = sharedPreference.edit()
         editor.putString(Constants.DEVICE_PREF, androidID)
-        editor.commit()
+        editor.apply()
     }
 
     private fun setupToolbar() {

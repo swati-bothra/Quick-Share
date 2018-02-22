@@ -10,7 +10,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-
 object FirebaseUtil {
 
     private var firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -48,5 +47,4 @@ object FirebaseUtil {
         val sharedPreference = App.applicationContext().getSharedPreferences(Constants.PREF_NAME, Context.MODE_PRIVATE)
         deviceID = sharedPreference.getString(Constants.DEVICE_PREF, "")
     }
-
 }
